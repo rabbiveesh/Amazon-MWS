@@ -1,0 +1,63 @@
+do { my $x = {
+       'build' => {
+                    'requires' => {
+                                    'DBD::SQLite' => '0',
+                                    'DBI' => '0',
+                                    'HTTP::Response' => '0',
+                                    'Test::Deep' => '0',
+                                    'Test::MockObject' => '0',
+                                    'Test::MockObject::Extends' => '0',
+                                    'Test::More' => '0',
+                                    'Test::Warnings' => '0'
+                                  }
+                  },
+       'develop' => {
+                      'requires' => {
+                                      'File::Spec' => '0',
+                                      'IO::Handle' => '0',
+                                      'IPC::Open3' => '0',
+                                      'Test::More' => '0',
+                                      'Test::Pod' => '1.41'
+                                    }
+                    },
+       'runtime' => {
+                      'requires' => {
+                                      'Class::InsideOut' => '0',
+                                      'DBI' => '0',
+                                      'DateTime' => '0',
+                                      'DateTime::Formate::ISO8601' => '0',
+                                      'Digest::HMAC_SHA1' => '0',
+                                      'Digest::MD5' => '0',
+                                      'Exception::Class' => '0',
+                                      'Exporter' => '0',
+                                      'HTTP::Request' => '0',
+                                      'LWP::Protocol::https' => '0',
+                                      'LWP::UserAgent' => '0',
+                                      'MIME::Base64' => '0',
+                                      'Moo' => '0',
+                                      'MooX::Types::MooseLike' => '0',
+                                      'Path::Tiny' => '0',
+                                      'Readonly' => '0',
+                                      'SQL::Abstract' => '0',
+                                      'Try::Tiny' => '0',
+                                      'URI' => '0',
+                                      'URI::Escape' => '0',
+                                      'XML::Compile' => '0',
+                                      'XML::LibXML::Simple' => '0',
+                                      'XML::Simple' => '0',
+                                      'namespace::clean' => '0'
+                                    }
+                    },
+       'test' => {
+                   'recommends' => {
+                                     'CPAN::Meta' => '2.120900'
+                                   },
+                   'requires' => {
+                                   'ExtUtils::MakeMaker' => '0',
+                                   'File::Spec' => '0',
+                                   'Test::More' => '0'
+                                 }
+                 }
+     };
+  $x;
+ }
