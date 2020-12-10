@@ -23,7 +23,7 @@ my @module_files = (
     'Amazon/MWS/Finances.pm',
     'Amazon/MWS/FulfillmentInventory.pm',
     'Amazon/MWS/FulfillmentOutbound.pm',
-    'Amazon/MWS/InboundShipments.pm',
+    'Amazon/MWS/InboundShipment.pm',
     'Amazon/MWS/Orders.pm',
     'Amazon/MWS/Products.pm',
     'Amazon/MWS/Reports.pm',

@@ -76,7 +76,7 @@ provides:
     file: lib/Amazon/MWS/FulfillmentOutbound.pm
     version: '0.150'
   Amazon::MWS::InboundShipment:
-    file: lib/Amazon/MWS/InboundShipments.pm
+    file: lib/Amazon/MWS/InboundShipment.pm
     version: '0.150'
   Amazon::MWS::Orders:
     file: lib/Amazon/MWS/Orders.pm
