@@ -90,11 +90,17 @@ define_api_method ListInboundShipmentItems =>
     service => "$inbound_service",
     parameters => {
         ShipmentId => {
-             required   =>      1,
+             required   =>      'id',
              type       =>      'string',
         },
-        LastUpdatedAfter        => { type => 'datetime' },
-        LastUpdatedBefore       => { type => 'datetime' }
+        LastUpdatedAfter        => {
+          type => 'datetime',
+          required => 'date'
+        },
+        LastUpdatedBefore       => {
+          type => 'datetime',
+          required => 'date'
+        }
     };
 
 define_api_method ListInboundShipmentItemsByNextToken =>

@@ -1,4 +1,6 @@
 package Amazon::MWS::Routines;
+use strict;
+use warnings;
 
 use URI;
 use DateTime;
@@ -20,16 +22,37 @@ our %EXPORT_TAGS = ( all => \@normal_exports );
 
 sub slurp_kwargs { ref $_[0] eq 'HASH' ? shift : { @_ } }
 
+sub check_for_required_args {
+  my ($params, $args) = @_;
+  my %required;
+  for my $name (keys %$params) {
+    my $param = $params->{$name};
+    next unless my $required_group = $param->{required};
+
+    my $req = $required{$required_group} ||= {};
+    $req->{list} ||= [];
+    push @{ $req->{list} }, $name;
+    $req->{needed}++;
+    $req->{seen}++ if exists $args->{$name};
+  }
+  return unless keys %required;
+  for my $req (values %required) {
+    return if $req->{seen} && $req->{seen} == $req->{needed}
+  }
+  Amazon::MWS::Exception::MissingArgument->throw(
+    name => [ map $_->{list}, values %required ])
+}
+
 sub process_params {
   my ($params, $args) = @_;
+
   my %form;
+  check_for_required_args $params, $args;
+  
   #TODO- now make unit tests for expected behaviors!
   foreach my $name (keys %$params) {
       my $param = $params->{$name};
-      unless (exists $args->{$name}) {
-          Amazon::MWS::Exception::MissingArgument->throw(name => $name) if $param->{required};
-          next;
-      }
+      next unless exists $args->{$name};
 
       my $type  = $param->{type};
       my $array_names  = $param->{array_names};
@@ -274,7 +297,7 @@ sub new {
     $opts{logfile} ||= $xmlconfig->{logfile};
  }
 
- my $attr = $opts->{agent_attributes};
+ my $attr = $opts{agent_attributes};
     $attr->{Language} = 'Perl';
 
     my $attr_str = join ';', map { "$_=$attr->{$_}" } keys %$attr;
