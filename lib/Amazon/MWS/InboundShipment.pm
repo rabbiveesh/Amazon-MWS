@@ -2,7 +2,7 @@ package Amazon::MWS::InboundShipment;
 
 use Amazon::MWS::Routines qw(:all);
 
-my $inbound_service = '/FulfillmentInboundShipment/2010-10-01';
+my $inbound_service = '/FulfillmentInboundShipment/2010-10-01/';
 
 define_api_method GetServiceStatus =>
     version => '2010-10-01',
@@ -65,6 +65,7 @@ define_api_method GetPrepInstructionsForSKU =>
 
 define_api_method ListInboundShipments =>
     raw_body => 1,
+    version => '2010-10-01',
     service => "$inbound_service",
     parameters => {
         ShipmentStatusList      => {
@@ -77,6 +78,7 @@ define_api_method ListInboundShipments =>
 
 define_api_method ListInboundShipmentsByNextToken =>
     raw_body => 1,
+    version => '2010-10-01',
     service => "$inbound_service",
     parameters => {
         NextToken => {
@@ -87,6 +89,7 @@ define_api_method ListInboundShipmentsByNextToken =>
 
 define_api_method ListInboundShipmentItems =>
     raw_body => 1,
+    version => '2010-10-01',
     service => "$inbound_service",
     parameters => {
         ShipmentId => {
@@ -105,6 +108,7 @@ define_api_method ListInboundShipmentItems =>
 
 define_api_method ListInboundShipmentItemsByNextToken =>
     raw_body => 1,
+    version => '2010-10-01',
     service => "$inbound_service",
     parameters => {
         NextToken => {
