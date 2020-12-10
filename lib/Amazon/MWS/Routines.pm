@@ -174,7 +174,6 @@ sub define_api_method {
 
         }
 
-
 	if ($self->{debug}) {
                 open (my $fh, '>>', $self->{logfile}) or warn("Cannot open $self->{logfile}");
 		print $fh Dumper($response);
